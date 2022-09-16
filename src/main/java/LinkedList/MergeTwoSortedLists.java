@@ -68,6 +68,7 @@ public class MergeTwoSortedLists {
     }
 
     /*
-    O(l1 +l2) for time and space : l1 and l2 being the length of the linked lists.
+    O(l1 +l2) for time: l1 and l2 being the length of the linked lists.
+    O(1) for space
      */
 }
