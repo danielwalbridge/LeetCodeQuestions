@@ -49,5 +49,5 @@ public class ReverseWordsInAString {
 /*
 O(n) time
 o(n) space
-n = the number or words in the string.
+n = the number of words in the string.
  */
