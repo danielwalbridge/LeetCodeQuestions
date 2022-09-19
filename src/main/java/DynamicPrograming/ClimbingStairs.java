@@ -52,3 +52,8 @@ public class ClimbingStairs {
         return dp[n];
     }
 }
+
+/*
+O(n) space and time
+n = number passed in / size of new dp array
+ */
