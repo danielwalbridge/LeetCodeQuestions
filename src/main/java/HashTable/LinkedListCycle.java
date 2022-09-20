@@ -65,4 +65,34 @@ public class LinkedListCycle {
     n = number of nodes in the LinkedList
      */
 
+
+    /*
+    Follow up: Can you solve it using O(1) (i.e. constant) memory?
+     */
+
+    public boolean hasCycleTwo(ListNode head) {
+
+        // quick check
+        if (head==null|| head.next==null) {
+            return false;
+        }
+        // set two pointers
+        ListNode slow = head;
+        ListNode fast = head.next;
+
+        // if they ever equal each other, we know we have an overlap
+        while (slow!=fast) {
+            if (fast==null|| fast.next==null) {
+                return false;
+            }
+            slow= slow.next;
+            fast = fast.next.next;
+        }
+        // if we bust out of the loop then we know there is a cycle
+        return true;
+    }
+
+    /*
+    we are now using constant memory, however, we may very well have to loop many times before we find the cycle
+     */
 }
