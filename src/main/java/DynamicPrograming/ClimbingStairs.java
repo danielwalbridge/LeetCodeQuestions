@@ -25,10 +25,6 @@ Explanation: There are three ways to climb to the top.
  */
 
 public class ClimbingStairs {
-    public static void main(String[] args) {
-        ClimbingStairs climbingStairs = new ClimbingStairs();
-        climbingStairs.climbStairs(3);
-    }
 
     public int climbStairs(int n) {
         //create a dp array
