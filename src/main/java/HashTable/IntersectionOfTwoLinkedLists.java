@@ -65,4 +65,48 @@ public class IntersectionOfTwoLinkedLists {
     b= list b length.
      */
 
+
+    /*
+    Follow up: Could you write a solution that runs in O(m + n) time and use only O(1) memory?
+     */
+
+    public ListNode getIntersectionNodeTwo(ListNode headA, ListNode headB) {
+
+        if (headA == null || headB == null) {
+            return null;
+        }
+        // we will need to find the length of each list.
+        int lengthA = findListLength(headA);
+        int lengthB = findListLength(headB);
+
+        // we want to move the longer list down, until their lengths are the same.
+        while (lengthA > lengthB) {
+            headA = headA.next;
+            lengthA--;
+        }
+
+        while (lengthB > lengthA) {
+            headB = headB.next;
+            lengthB--;
+        }
+
+        // once they are the same, we simply need to move down each list until we find their intersection point.
+        // if they are the same because they are both null, we will return null as well.
+        while (headA != headB) {
+            headA = headA.next;
+            headB = headB.next;
+        }
+        // we can return either head at this point.
+        return headA;
+    }
+
+    public int findListLength(ListNode node) {
+        int length = 0;
+        while (node!=null) {
+            node= node.next;
+            length++;
+        }
+        return length;
+    }
+
 }
