@@ -27,9 +27,28 @@ Total amount you can rob = 2 + 9 + 1 = 12.
 public class HouseRobber {
     public int rob(int[] nums) {
 
-        /*
-        was not able to fully figure out in time, but I should be able to get this next time.
-         */
-        return 0;
+        // create an array to hold max profit at each step.
+      int[] dp = new int[nums.length +1];
+
+      // put in 0 houses and the first house as values.
+        dp[0] = 0;
+        dp[1] = nums[0];
+
+        // loop through nums
+        for (int i =1; i < nums.length; i++) {
+            // the variables below are not needed, however they make it a little easier to understand.
+//            int currentHouse = nums[i];
+//            int totalToAddTOCurrent = dp[i-1];
+//            int potentialNewMax = currentHouse + totalToAddTOCurrent;
+//            int previousMax = dp[i];
+//            dp[i+1] = Math.max(potentialNewMax, previousMax);
+            dp[i+1] = Math.max(nums[i] + dp[i-1],dp[i] );
+        }
+        return dp[dp.length-1];
     }
+
+    /*
+    O(n) space and time
+    n = size of array passed in.
+     */
 }
