@@ -1,5 +1,6 @@
 package REPEAT;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -45,21 +46,21 @@ public class LetterCombinationsOfAPhoneNumber {
 
         // generate the map
         HashMap<Character, String> map = new HashMap<>();
-        map.put('2',"abc");
-        map.put('3',"def");
-        map.put('4',"ghi");
-        map.put('5',"jkl");
-        map.put('6',"mno");
-        map.put('7',"pqrs");
-        map.put('8',"tuv");
-        map.put('9',"wxyz");
+        map.put('2', "abc");
+        map.put('3', "def");
+        map.put('4', "ghi");
+        map.put('5', "jkl");
+        map.put('6', "mno");
+        map.put('7', "pqrs");
+        map.put('8', "tuv");
+        map.put('9', "wxyz");
 
         // generate a letters array
-        String[] lettersFromDigits = new String[digits.length()-1];
+        String[] lettersFromDigits = new String[digits.length() - 1];
         // index for each.
-        int index =0;
+        int index = 0;
         // grab all the letters to compare.
-        for (Character number:digits.toCharArray()) {
+        for (Character number : digits.toCharArray()) {
             lettersFromDigits[index] = map.get(number);
             index++;
         }
@@ -70,8 +71,10 @@ public class LetterCombinationsOfAPhoneNumber {
         String firstDigitsLetter = lettersFromDigits[0];
 
         // loop through the array...but how do we generate all the loops we will need?
-        for (int i =0; i < firstDigitsLetter.length(); i++) {
+        for (int i = 0; i < firstDigitsLetter.length(); i++) {
 
         }
+        return new ArrayList<>();
     }
 }
+
