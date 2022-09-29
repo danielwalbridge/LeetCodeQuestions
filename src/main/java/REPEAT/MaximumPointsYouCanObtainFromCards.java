@@ -30,14 +30,48 @@ Explanation: You have to take all the cards. Your score is the sum of points of 
  */
 
 public class MaximumPointsYouCanObtainFromCards {
-//    public int maxScore(int[] cardPoints, int k) {
+    public int maxScore(int[] cardPoints, int k) {
+
+        // set initial sum
+        int greatestSum = 0;
+        // grab amount of cards to loop pulling from back.
+        int firstPullFromBack = k;
+
+        int cardPointIndexes = cardPoints.length-1;
+
+        // grab total sum if we pull all from the back
+        for (int backCardIndex = cardPointIndexes; firstPullFromBack >0 ; backCardIndex--) {
+            greatestSum+= cardPoints[backCardIndex];
+            firstPullFromBack--;
+        }
+        // grab back index and set it to one before the last card grabbed
+        // will help prevent index out of bounds
+        int backCardIndex = cardPointIndexes - k -1;
+
+        // set new sum to start = to greatestSum
+        int newSumTotal = greatestSum;
+
+        // loop from the front of the deck, and checking if the new sum is greater than previous
+        for (int i = 0; i < k; i ++) {
+            // move to next back card
+            backCardIndex++;
+
+            // remove sum of last pulled card form back
+            newSumTotal-= cardPoints[backCardIndex];
+
+            // add card from the front
+            newSumTotal+= cardPoints[i];
+
+            // compare the values an update as needed
+            greatestSum = Math.max(greatestSum, newSumTotal);
+        }
+
+        // return greatest sum
+        return greatestSum;
 }
 
+// get an out of bounds issue, but I'm close to solving it
+    // I'm ladning on somethingknown as Prefix Sum.
 
-    /*
-    was unable to solve, could not figure out the logic trick to it.
 
-    -- Was able to think of a brute force approach to take all possible solutions, but would not be very effective.
-     */
-
-//}
+}
