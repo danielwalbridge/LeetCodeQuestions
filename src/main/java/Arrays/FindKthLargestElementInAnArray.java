@@ -1,4 +1,4 @@
-package REPEAT;
+package Arrays;
 
 /*
 Given an integer array nums and an integer k, return the kth largest element in the array.
@@ -32,10 +32,7 @@ My thoughts were that I could use a min or max heap, however, I actually did not
 
 public class FindKthLargestElementInAnArray {
 
-    public static void main(String[] args) {
-        FindKthLargestElementInAnArray element = new FindKthLargestElementInAnArray();
-        element.findKthLargest(new int[]{3,2,1,5,6,4}, 2);
-    }
+
 
     public int findKthLargest(int[] nums, int k) {
 
