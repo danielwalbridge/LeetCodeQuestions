@@ -42,24 +42,25 @@ public class ValidPalindrome {
         int frontPointer = 0;
         int backPointer = s.length()-1;
 
-        // convert to lowercase;
-        s = s.toLowerCase();
 
         // move forward and backward through the string.
         // if we find an exception return false.
-        while (frontPointer <= backPointer) {
-            // move frontPointer until it is a letter or digit
-            while (!Character.isLetterOrDigit(s.charAt(frontPointer)) && frontPointer <=backPointer) {
+        while (frontPointer < backPointer) {
+            // move frontPointer forward if not digit or letter
+            if (!Character.isLetterOrDigit(s.charAt(frontPointer))) {
                 frontPointer++;
+                continue;
             }
-            // move backPointer until it points at a letter of digit
-            while (!Character.isLetterOrDigit(s.charAt(backPointer))  && frontPointer <=backPointer) {
+            // move backPointer if  not a digit or letter
+           else if (!Character.isLetterOrDigit(s.charAt(backPointer))  ) {
                 backPointer--;
+                continue;
             }
-
-            if (s.charAt(frontPointer)!= s.charAt(backPointer)) {
+           // check if they are equal
+            else if (Character.toLowerCase(s.charAt(frontPointer))!= Character.toLowerCase(s.charAt(backPointer))) {
                 return false;
             }
+            // move pointers
             frontPointer++;
             backPointer--;
         }
@@ -67,8 +68,10 @@ public class ValidPalindrome {
         return true;
     }
 
-    // almost have it, just dealing with some bounds issues and optimization.
-
-
+    /*
+    O(n) time
+    O(1) space
+    n = number of chars in string
+     */
 
 }
