@@ -1,4 +1,4 @@
-package REPEAT;
+package Arrays;
 
 
 /*
