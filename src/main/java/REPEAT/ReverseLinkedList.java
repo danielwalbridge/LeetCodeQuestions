@@ -57,4 +57,7 @@ public class ReverseLinkedList {
 
     return reverse;
     }
+
+    // O(N) time, O(N) space.
+    // n = number of nodes in the linked list.
 }
