@@ -47,5 +47,9 @@ public class MaximumSubarray {
     return maxSubArrayValue;
     }
 
+    // O(n) time
+    // O(1) space
+    // n = number of elements in nums array
+
 
 }
