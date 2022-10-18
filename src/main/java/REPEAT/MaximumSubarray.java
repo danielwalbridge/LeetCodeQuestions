@@ -40,7 +40,7 @@ public class MaximumSubarray {
             currentSubArrayValue = Math.max(currentSubArrayValue + nums[i], nums[i]);
 
             // check if we need to update max, based off of current and previous max
-            Math.max(currentSubArrayValue, maxSubArrayValue);
+            maxSubArrayValue = Math.max(currentSubArrayValue, maxSubArrayValue);
         }
 
             // return the max value of con subarray
