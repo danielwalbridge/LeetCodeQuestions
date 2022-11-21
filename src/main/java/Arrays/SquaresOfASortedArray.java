@@ -1,4 +1,4 @@
-package REPEAT;
+package Arrays;
 
 /*
 Given an integer array nums sorted in non-decreasing order,
