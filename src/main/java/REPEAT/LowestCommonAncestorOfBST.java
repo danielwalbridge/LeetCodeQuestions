@@ -37,20 +37,19 @@ public class LowestCommonAncestorOfBST {
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 
-        // traverse left.
-        if (p.val < root.val && q.val < root.val) {
-            lowestCommonAncestor(root.left, p,q);
-        }
+        if(p.val < root.val && q.val > root.val) return root;
 
-        // traverse right.
-        if (p.val > root.val && q.val > root.val) {
-            lowestCommonAncestor(root.right, p,q);
-        }
+        if(q.val < root.val && p.val > root.val) return root;
 
-        return root;
+        if(p.val == root.val || q.val == root.val) return root;
+
+        if(p.val < root.val && q.val < root.val) {
+            return lowestCommonAncestor(root.left, p, q);
+        }
+        return lowestCommonAncestor(root.right, p, q);
     }
 
-    // We will return the root if both are not on the left or right. If one is on the left, and one is on the right, or one is equal...Then we know we have foudn the LCA
+
 
     //  O(n) + recursive space, can be done iteratively for O(1) space
 }
