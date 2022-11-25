@@ -29,40 +29,68 @@ import java.util.ArrayList;
 
 public class MaximumSwap {
 
+    public static void main(String[] args) {
+        MaximumSwap maximumSwap = new MaximumSwap();
+        maximumSwap.maximumSwap(9973);
+    }
+
     public int maximumSwap(int num) {
 
-        String numString = String.valueOf(num);
+        // convert the int nums into an int[]
+        int[] digits = Integer.toString(num).chars().map(c -> c-'0').toArray();
 
-        if (numString.length() == 1) {
+        if (digits.length < 1) {
             return num;
         }
 
-        // else we need to loop through the number and swap if needed.
-
         int frontPointer = 0;
-        int backPointer = numString.length()-1;
+        int backPointer = digits.length-1;
 
-           while (frontPointer < backPointer && numString.charAt(frontPointer) == '9') {
+           while (frontPointer < backPointer && digits[frontPointer]== 9) {
                frontPointer++;
            }
-           // front pointer is no longer 9, so we can check to see if we can swap it with something greater.
 
+        int maxDigetPointer = 0;
         int maxDiget = Integer.MIN_VALUE;
-           int maxDigetPointer;
-        while (frontPointer < backPointer) {
 
-            if (numString.charAt(backPointer) == '9') {
-                // swap the poniters and return new max
+        for (int i = frontPointer; i < digits.length; i ++) {
+            while (frontPointer < backPointer) {
+
+                // if we ever find a 9, we can swap it, then break out of the loop.
+                if (digits[backPointer] ==9) {
+                    digits[backPointer] = digits[frontPointer];
+                    digits[frontPointer] = 9;
+                    break;
+                }
+                else {
+                    // if we find something larger that is not a 9, we want to hold it's location and move forward.
+                    if (digits[backPointer] > maxDiget) {
+                        maxDiget = digits[backPointer];
+                        maxDigetPointer = backPointer;
+                    }
+                }
+                backPointer--;
             }
+            // swap if ever touched anything
+            if (digits[maxDigetPointer] != 0 && digits[maxDigetPointer] > digits[frontPointer]) {
+                digits[maxDigetPointer] = digits[frontPointer];
+                digits[frontPointer] = maxDiget;
+                break;
+            }
+        }
+        StringBuilder sb  = new StringBuilder();
 
-//            if (numString.);
+        for (int digit: digits) {
+            sb.append(digit);
+        }
 
+        int finalMax = Integer.parseInt(sb.toString());
 
-       }
-        return num;
+        return finalMax;
     }
 
-    // had a hard time focusing on this, but on the right track.
-    // Will do it again tomorrow
+
+    // another try, and getting a lot closer, just need to finish it out
+
 
 }
