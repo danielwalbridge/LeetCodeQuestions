@@ -20,33 +20,47 @@ Explanation: [4,9] is also accepted.
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+
 
 public class IntersectionOfTwoArrays {
 
     public int[] intersection ( int[] nums1, int[] nums2) {
 
-        // find the length of each array
-        int num1Length = nums1.length;
-        int num2Length = nums2.length;
-
-        // grab the smaller of the arrays, since this can be the max amount of intersections.
-        int smallerLength = Math.min(num1Length,num2Length);
-
-        // create a new array for result
-        ArrayList<Integer> result = new ArrayList<>();
-
-        // set index for traversal
-        int i = 0;
-        while (i < smallerLength) {
-            if (nums1[i] == nums2[i]) {
-                result.add(nums1[i]);
-            }
-            i++;
+        if(nums1.length < 1 || nums2.length < 1 || nums1 == null || nums2 == null) {
+            return new int[]{};
         }
-        int[] resultArray = result.stream().mapToInt(l -> l).toArray();
-        return resultArray;
 
+        ArrayList<Integer> intersections = new ArrayList<>();
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int number:nums1) {
+            if (!map.containsKey(number)) {
+                map.put(number, 0);
+            }
+        }
+
+        for (int number:nums2) {
+            if (map.containsKey(number) && map.get(number) == 0) {
+                intersections.add(number);
+                map.replace(number, 0, 1);
+            }
+        }
+
+       return intersections.stream().mapToInt(i -> i).toArray();
     }
 
-    // mis understood problem. will need to come back and try again
+    /*
+    Big O
+    Time:O(N + M)
+    Space: O(N)
+    N = length of nums1
+    M = length of nums2
+
+
+    We could do a trade off to save space by not using a HM, but in return we would need more time.
+    The steps I could think of in this would be to sort the arrays, then search through both of them while building the result array
+
+     */
+
 }
