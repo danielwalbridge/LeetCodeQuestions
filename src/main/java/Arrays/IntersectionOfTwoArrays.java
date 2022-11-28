@@ -1,4 +1,4 @@
-package REPEAT;
+package Arrays;
 
 /*
 Given two integer arrays nums1 and nums2,
