@@ -27,11 +27,11 @@ import java.util.Stack;
 public class RemoveKDigits {
 
     public static void main(String[] args) {
-        String num = "1432219";
-        int k = 3;
+        String num = "1234567890";
+        int k = 9;
 
         RemoveKDigits removeKDigits = new RemoveKDigits();
-        removeKDigits.removeKdigits(num,k);
+        System.out.println(removeKDigits.removeKdigits(num,k));
     }
 
 
